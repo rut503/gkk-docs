@@ -1,6 +1,7 @@
 ## Back-End System : *Django*
 We will be using ***Django***, which is a popular Python library to build out the back-end system for GKK product.
 
+Tutorial : https://www.youtube.com/watch?v=t7DrJqcUviA  
 Django Website : https://www.djangoproject.com/  
 Documentation : https://docs.djangoproject.com/en/3.2/  
 

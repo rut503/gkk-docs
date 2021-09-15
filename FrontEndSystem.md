@@ -1,6 +1,7 @@
 ## Front-End System : *React Native*
 We will be using ***React Native***, which is a subset of React.JS library built with JavaScript to build out the front-end system for GKK product. 
 
+Tutorial : https://youtu.be/qSRrxpdMpVc  
 React Native Wesite : https://reactnative.dev/  
 Documentation : https://reactnative.dev/docs/getting-started  
 
