@@ -1,0 +1,131 @@
+Queries we want. 
+
+1) Want to display the orders for a consumer and producer.
+
+2) Want consumers to search for food in their location, at a certain time. 
+
+// User documents on there own, will allow consumers to see what foods a favorite producer has to offer. 
+User Documents
+{
+    _id: 123456,
+    name: Bob,
+    phoneNum: 815-765-7895,
+    street: 123 Fake Street,
+    city: DeKalb,
+    state: IL,
+    zip: 60000,
+    food: [foodId, foodId, ... ],
+    averageConsumerRating: 4,
+    // Reviews left on user '123456' by a producer
+    consumerReviews:[
+        {
+            rating: 4,
+            description: "Arrived on time for his food",
+        }
+        {
+            rating: 4,
+            description: "Picked up food on time",
+        }
+    ],
+    // Orders consumer has
+    // I'm thinking we have a bool value, toPrepare, which tells us if the order
+    // is to be prepared by user '123456' or if they ordered it. 
+    ordersCreated: [
+        {
+            items: [{
+                quantity: 2,
+                food: foodId,
+            }],
+            status: "Paid",
+            chefId: 124578
+            amount: $7.00
+            pickUpDateTime: 09/20/2021 8:00pm       
+        },
+        {
+            items: [{
+                quantity: 5,
+                food: foodId,
+            },
+            {
+                quantity: 6,
+                food: foodId
+            }],
+            status: "Not Paid",
+            chefId: 124586
+            amount: $17.00
+            pickUpDateTime: 09/10/2021 5:00pm       
+        }
+    ],
+    // Same as above, havn't changed
+    ordersToPrepare: [
+        {
+            items: [foodId],
+            status: "Paid",      
+        },
+        {
+            items: [foodId],
+            status: "Not Paid",      
+        }
+    ],
+}
+
+// Separate Food document which has a location property.
+// Producer reviews are tied to food, note user
+Food Documents
+{
+    _id:
+    userId:
+    type:
+    description:
+    photo:
+    price:
+    rating:
+    name:
+    location:
+    reviews:[
+        {
+            userId: 123456,
+            rating: 2,
+            description: "Food wasn't properly prepared. Food was cold",
+        }
+    ],
+}
+
+// Each date gets a documents
+Location
+{
+    _id
+    date: 09/20/2021
+    location: Elgin
+    breakfastMeals: [foodId, foodId, ...]
+    lunchMeals: [foodId, foodId, ...]
+    dinnerMeal: [foodId, foodId, ...]
+}
+
+
+Notes:
+Whenever a new review is added, the averageRating value needs to be recalculated. 
+
+Could make reviews a reference. 
+
+Embedded = less queries but more data
+
+*************************************************************************************************
+
+When ever a food is added by a producer, the app assigns the Food document to the correct
+array in the 'Location' collection. 
+A query will push the food into the respective array. 
+
+User Cases:
+
+Use Case 1:
+Consumer wants to find Chinese food on the 9th for breakfast. 
+App would query the Location collection and find the document that corresponds
+to the 9th. 
+
+Use Case 2: 
+Producer wants to add a new food to their menu.
+App will add a Food docuemnts to that users Document food array. 
+
+Concerns:
+How will a consumer search for the best producers in a location?
