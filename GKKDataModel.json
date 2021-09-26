@@ -171,24 +171,22 @@ Food Documents
     ],
 }
 
-Notes:
+Notes for implementation:
 Whenever a new review is added, the averageRating value needs to be recalculated. 
 
-Could make reviews a reference. 
+Embedded documents are most useful when you only use a single read statement to get all the data needed. 
 
-Embedded = less queries but more data
-
+Manual references are when you save the _id field of one document in another document as a reference. Then you application can run a second query to return the related data. 
+Source: https://docs.mongodb.com/manual/reference/database-references/
 *************************************************************************************************
-Queries we want. 
+Most used queries. 
 
-1) Want to display the orders for a consumer and producer.
+1) Display the orders for a consumer and producer.
 
-2) Want consumers to search for food in their location, at a certain time. 
+2) Display the menu items for a single producer. 
 
+3) Display the food items offered in a set location, set time and diet restriction
 
-When ever a food is added by a producer, the app assigns the Food document to the correct
-array in the 'Location' collection. 
-A query will push the food into the respective array. 
 
 User Cases:
 
@@ -199,7 +197,9 @@ to the 9th.
 
 Use Case 2: 
 Producer wants to add a new food to their menu.
-App will add a Food docuemnts to that users Document food array. 
+App will insert a new food document to the Food collection. 
+App will use the producersId to find an the producer's document. 
+App will add the foodId to the Food array in the producer's document
 
 Concerns:
 How will a consumer search for the best producers in a location?
