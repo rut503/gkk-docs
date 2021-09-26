@@ -1,10 +1,3 @@
-Queries we want. 
-
-1) Want to display the orders for a consumer and producer.
-
-2) Want consumers to search for food in their location, at a certain time. 
-
-// User documents on there own, will allow consumers to see what foods a favorite producer has to offer. 
 Producer Documents
 {
     "_id": 123456,
@@ -17,18 +10,8 @@ Producer Documents
         "zip": 60000,
     },
     "food": [foodId, foodId, ... ],
-    "averageConsumerRating": 4,
-    // Reviews left on user '123456' by a producer
-    "reviewsForProducer": [
-        {
-            "rating": 5,
-            "description": "Food was nice and warm",
-        }
-        {
-            "rating": 2,
-            "description": "Food was 10 minutes late and order was missing cheese",
-        }
-    ],
+    "averageConsumerRating": 5,
+
     // Orders consumer has
     // I'm thinking we have a bool value, toPrepare, which tells us if the order
     // is to be prepared by user '123456' or if they ordered it. 
@@ -74,10 +57,25 @@ Producer Documents
         "Saturday": [FoodID, FoodId, ...], 
     }
 }
+Reviews for Producers Documents
+{
+    // Review for chef 123456
+    "_id": 1,
+    "producerId": 123456, 
+    "rating": 5,
+    "description": "Food was nice and warm",
+}
+{
+    // Review for chef 123456
+    "_id": 2,
+    "producerId": 123456, 
+    "rating": 5,
+    "description": "Food was amazing",
+}
 
 Consumer Documents
 {
-    "_id": 123456,
+    "_id": 555555,
     "name": Bob,
     "phoneNum": 815-765-7895,
     "address": {
@@ -87,18 +85,8 @@ Consumer Documents
         "zip": 60000,
     },
     "food": [foodId, foodId, ... ],
-    "averageConsumerRating": 4,
-    // Reviews left on user '123456' by a producer
-    "reviewsForConsumer": [
-        {
-            "rating": 4,
-            "description": "Arrived on time for his food",
-        }
-        {
-            "rating": 1,
-            "description": "Did not pick up food!",
-        }
-    ],
+    "averageConsumerRating": 2.5,
+
     // Orders consumer has
     // I'm thinking we have a bool value, toPrepare, which tells us if the order
     // is to be prepared by user '123456' or if they ordered it. 
@@ -145,6 +133,22 @@ Consumer Documents
     }
 }
 
+Reviews for Consumer Documents
+{
+    // Review for chef 123456
+    "_id": 1,
+    "producerId": 555555, 
+    "rating": 5,
+    "description": "Arrived on time for his food",
+}
+{
+    // Review for chef 123456
+    "_id": 2,
+    "producerId": 555555, 
+    "rating": 1,
+    "description": "Did not pick up food!",
+}
+
 // Separate Food document which has a location property.
 // Producer reviews are tied to food, not user
 // Limit of 50 food items per user
@@ -175,6 +179,12 @@ Could make reviews a reference.
 Embedded = less queries but more data
 
 *************************************************************************************************
+Queries we want. 
+
+1) Want to display the orders for a consumer and producer.
+
+2) Want consumers to search for food in their location, at a certain time. 
+
 
 When ever a food is added by a producer, the app assigns the Food document to the correct
 array in the 'Location' collection. 
