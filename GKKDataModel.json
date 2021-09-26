@@ -30,14 +30,14 @@ User Documents
     // Orders consumer has
     // I'm thinking we have a bool value, toPrepare, which tells us if the order
     // is to be prepared by user '123456' or if they ordered it. 
-    ordersCreated: [
+    ordersToCreate: [
         {
             items: [{
                 quantity: 2,
                 food: foodId,
             }],
             status: "Paid",
-            chefId: 124578
+            consumerId: 124578
             amount: $7.00
             pickUpDateTime: 09/20/2021 8:00pm       
         },
@@ -67,21 +67,31 @@ User Documents
             status: "Not Paid",      
         }
     ],
+    // Erase a days menu array after the day occurs
+    "Menu": {
+        "Sunday": [FoodID],
+        "Monday": [FoodID, FoodId,  ...],
+        "Tuesday": [FoodID, FoodId, ...],
+        "Wednesday": [FoodID, FoodId, ...],
+        "Thursday": [FoodID, FoodId, ...],
+        "Friday": [FoodID, FoodId, ...],
+        "Saturday": [FoodID, FoodId, ...], 
+    }
 }
 
+
 // Separate Food document which has a location property.
-// Producer reviews are tied to food, note user
+// Producer reviews are tied to food, not user
 Food Documents
 {
     _id:
     userId:
-    type:
+    dietRestriction:
     description:
     photo:
     price:
     rating:
     name:
-    location:
     reviews:[
         {
             userId: 123456,
@@ -90,18 +100,6 @@ Food Documents
         }
     ],
 }
-
-// Each date gets a documents
-Location
-{
-    _id
-    date: 09/20/2021
-    location: Elgin
-    breakfastMeals: [foodId, foodId, ...]
-    lunchMeals: [foodId, foodId, ...]
-    dinnerMeal: [foodId, foodId, ...]
-}
-
 
 Notes:
 Whenever a new review is added, the averageRating value needs to be recalculated. 
