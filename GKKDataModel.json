@@ -10,10 +10,12 @@ Producer Documents
     "_id": 123456,
     "name": Bob,
     "phoneNum": 815-765-7895,
-    "street": 123 Fake Street,
-    "city": DeKalb,
-    "state": IL,
-    "zip": 60000,
+    "address": {
+        "street": 123 Fake Street,
+        "city": DeKalb,
+        "state": IL,
+        "zip": 60000,
+    },
     "food": [foodId, foodId, ... ],
     "averageConsumerRating": 4,
     // Reviews left on user '123456' by a producer
@@ -78,10 +80,12 @@ Consumer Documents
     "_id": 123456,
     "name": Bob,
     "phoneNum": 815-765-7895,
-    "street": 123 Fake Street,
-    "city": DeKalb,
-    "state": IL,
-    "zip": 60000,
+    "address": {
+        "street": 123 Fake Street,
+        "city": DeKalb,
+        "state": IL,
+        "zip": 60000,
+    },
     "food": [foodId, foodId, ... ],
     "averageConsumerRating": 4,
     // Reviews left on user '123456' by a producer
