@@ -5,69 +5,63 @@ Queries we want.
 2) Want consumers to search for food in their location, at a certain time. 
 
 // User documents on there own, will allow consumers to see what foods a favorite producer has to offer. 
-User Documents
+Producer Documents
 {
-    _id: 123456,
-    name: Bob,
-    phoneNum: 815-765-7895,
-    street: 123 Fake Street,
-    city: DeKalb,
-    state: IL,
-    zip: 60000,
-    food: [foodId, foodId, ... ],
-    averageConsumerRating: 4,
+    "_id": 123456,
+    "name": Bob,
+    "phoneNum": 815-765-7895,
+    "street": 123 Fake Street,
+    "city": DeKalb,
+    "state": IL,
+    "zip": 60000,
+    "food": [foodId, foodId, ... ],
+    "averageConsumerRating": 4,
     // Reviews left on user '123456' by a producer
-    consumerReviews:[
+    "reviewsForProducer": [
         {
-            rating: 4,
-            description: "Arrived on time for his food",
+            "rating": 5,
+            "description": "Food was nice and warm",
         }
         {
-            rating: 4,
-            description: "Picked up food on time",
+            "rating": 2,
+            "description": "Food was 10 minutes late and order was missing cheese",
         }
     ],
     // Orders consumer has
     // I'm thinking we have a bool value, toPrepare, which tells us if the order
     // is to be prepared by user '123456' or if they ordered it. 
-    ordersToCreate: [
+    "acceptedOrdersToCreate": [
         {
-            items: [{
+            "items": [{
                 quantity: 2,
                 food: foodId,
             }],
-            status: "Paid",
-            consumerId: 124578
-            amount: $7.00
-            pickUpDateTime: 09/20/2021 8:00pm       
+            "status": "Paid",
+            "consumerId": 124578,
+            "amount": $7.00,
+            "pickUpDateTime": 09/20/2021 8:00pm,   
         },
         {
-            items: [{
-                quantity: 5,
-                food: foodId,
+            "items": [{
+                "quantity": 5,
+                "food": foodId,
             },
             {
-                quantity: 6,
-                food: foodId
+                ""quantity"": 6,
+                "food": foodId
             }],
-            status: "Not Paid",
-            chefId: 124586
-            amount: $17.00
-            pickUpDateTime: 09/10/2021 5:00pm       
+            "status": "Not Paid",
+            "consumerId": 124586,
+            "amount": 17.00,
+            "pickUpDateTime": 09/10/2021 5:00pm       
         }
     ],
-    // Same as above, havn't changed
-    ordersToPrepare: [
-        {
-            items: [foodId],
-            status: "Paid",      
-        },
-        {
-            items: [foodId],
-            status: "Not Paid",      
-        }
-    ],
-    // Erase a days menu array after the day occurs
+
+    "pendingOrderForProducer": [
+
+    ]
+
+    // Batch process that will clear a days menu array after the day has passed
     "Menu": {
         "Sunday": [FoodID],
         "Monday": [FoodID, FoodId,  ...],
@@ -79,24 +73,92 @@ User Documents
     }
 }
 
+Consumer Documents
+{
+    "_id": 123456,
+    "name": Bob,
+    "phoneNum": 815-765-7895,
+    "street": 123 Fake Street,
+    "city": DeKalb,
+    "state": IL,
+    "zip": 60000,
+    "food": [foodId, foodId, ... ],
+    "averageConsumerRating": 4,
+    // Reviews left on user '123456' by a producer
+    "reviewsForConsumer": [
+        {
+            "rating": 4,
+            "description": "Arrived on time for his food",
+        }
+        {
+            "rating": 1,
+            "description": "Did not pick up food!",
+        }
+    ],
+    // Orders consumer has
+    // I'm thinking we have a bool value, toPrepare, which tells us if the order
+    // is to be prepared by user '123456' or if they ordered it. 
+    "acceptedOrdersToPickup": [
+        {
+            "items": [{
+                "quantity": 2,
+                "food": foodId,
+            }],
+            "status": "Paid",
+            "producerId": 124578,
+            "amount": $7.00,
+            "pickUpDateTime": 09/20/2021 8:00pm,   
+        },
+        {
+            "items": [{
+                "quantity": 5,
+                "food": foodId,
+            },
+            {
+                "quantity": 6,
+                "food": foodId
+            }],
+            "status": "Not Paid",
+            "producerId": 124586,
+            "amount": 17.00,
+            "pickUpDateTime": 09/10/2021 5:00pm       
+        }
+    ],
+
+    "pendingOrderForConsumer": [
+        
+    ]
+
+    // Batch process that will clear a days menu array after the day has passed
+    "Menu": {
+        "Sunday": [FoodID],
+        "Monday": [FoodID, FoodId,  ...],
+        "Tuesday": [FoodID, FoodId, ...],
+        "Wednesday": [FoodID, FoodId, ...],
+        "Thursday": [FoodID, FoodId, ...],
+        "Friday": [FoodID, FoodId, ...],
+        "Saturday": [FoodID, FoodId, ...], 
+    }
+}
 
 // Separate Food document which has a location property.
 // Producer reviews are tied to food, not user
+// Limit of 50 food items per user
 Food Documents
 {
-    _id:
-    userId:
-    dietRestriction:
-    description:
-    photo:
-    price:
-    rating:
-    name:
-    reviews:[
+    "_id": 12568, 
+    "userId": 546,
+    "dietRestriction": "N/A",
+    "description": "American French Fries",
+    "photo": "image.jpg",
+    "price": 5.00,
+    "rating": 4.54, 
+    "name": "French Fries",
+    "reviews":[ 
         {
-            userId: 123456,
-            rating: 2,
-            description: "Food wasn't properly prepared. Food was cold",
+            "userId": 123456,
+            "rating": 2,
+            "description": "Food wasn't properly prepared. Food was cold",
         }
     ],
 }
