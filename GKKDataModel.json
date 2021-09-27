@@ -159,7 +159,7 @@ Food Documents
 {
     "_id": 12568, 
     "producerId": 546,
-    "dietRestriction": "N/A",
+    "dietPreference": "N/A",
     "description": "American French Fries",
     "photo": "image.jpg",
     "price": 5.00,
