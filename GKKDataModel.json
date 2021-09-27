@@ -9,8 +9,9 @@ Producer Documents
         "state": IL,
         "zip": 60000,
     },
+    // Bounded to 50
     "food": [foodId, foodId, ... ],
-    "averageConsumerRating": 5,
+    "averageProducerRating": 5,
 
     // Orders consumer has
     // I'm thinking we have a bool value, toPrepare, which tells us if the order
@@ -63,6 +64,7 @@ Reviews for Producers Documents
     "_id": 1,
     "producerId": 123456, 
     "rating": 5,
+    // Reviews bounded to 300 characters
     "description": "Food was nice and warm",
 }
 {
@@ -137,14 +139,15 @@ Reviews for Consumer Documents
 {
     // Review for chef 123456
     "_id": 1,
-    "producerId": 555555, 
+    "consumerId": 555555, 
     "rating": 5,
+    // Reviews bounded to 300 characters
     "description": "Arrived on time for his food",
 }
 {
     // Review for chef 123456
     "_id": 2,
-    "producerId": 555555, 
+    "consumerId": 555555, 
     "rating": 1,
     "description": "Did not pick up food!",
 }
@@ -155,20 +158,21 @@ Reviews for Consumer Documents
 Food Documents
 {
     "_id": 12568, 
-    "userId": 546,
+    "producerId": 546,
     "dietRestriction": "N/A",
     "description": "American French Fries",
     "photo": "image.jpg",
     "price": 5.00,
     "rating": 4.54, 
     "name": "French Fries",
-    "reviews":[ 
-        {
-            "userId": 123456,
-            "rating": 2,
-            "description": "Food wasn't properly prepared. Food was cold",
-        }
-    ],
+}
+
+Reviews for Food
+{
+    "_id": 535,
+    "foodId": 12568,
+    "rating": 5,
+    "description": "Food was amazing, tasted like my grandmas"
 }
 
 Notes for implementation:
