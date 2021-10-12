@@ -1,12 +1,13 @@
 Producer Documents
 {
     "_id": 123456,
-    "name": Bob,
+    "firstName": "Bob",
+    "lastName": "Bill",
     "phoneNum": 815-765-7895,
     "address": {
-        "street": 123 Fake Street,
-        "city": DeKalb,
-        "state": IL,
+        "street": "123 Fake Street",
+        "city": "DeKalb",
+        "state": "IL",
         "zip": 60000,
     },
     // Bounded to 50
@@ -19,8 +20,8 @@ Producer Documents
     "acceptedOrdersToCreate": [
         {
             "items": [{
-                quantity: 2,
-                food: foodId,
+                "quantity": 2,
+                "food": foodId,
             }],
             "status": "Paid",
             "consumerId": 124578,
@@ -45,18 +46,8 @@ Producer Documents
 
     "pendingOrderForProducer": [
 
-    ]
-
-    // Batch process that will clear a days menu array after the day has passed
-    "Menu": {
-        "Sunday": [FoodID],
-        "Monday": [FoodID, FoodId,  ...],
-        "Tuesday": [FoodID, FoodId, ...],
-        "Wednesday": [FoodID, FoodId, ...],
-        "Thursday": [FoodID, FoodId, ...],
-        "Friday": [FoodID, FoodId, ...],
-        "Saturday": [FoodID, FoodId, ...], 
-    }
+    ],
+    "dateCreated": "new Date()"
 }
 Reviews for Producers Documents
 {
@@ -78,15 +69,15 @@ Reviews for Producers Documents
 Consumer Documents
 {
     "_id": 555555,
-    "name": Bob,
+    "name": "Bob",
     "phoneNum": 815-765-7895,
     "address": {
-        "street": 123 Fake Street,
-        "city": DeKalb,
-        "state": IL,
+        "street": "123 Fake Street",
+        "city": "DeKalb",
+        "state": "IL",
         "zip": 60000,
     },
-    "food": [foodId, foodId, ... ],
+    "food": "[foodId, foodId, ... ]",
     "averageConsumerRating": 2.5,
 
     // Orders consumer has
@@ -96,21 +87,21 @@ Consumer Documents
         {
             "items": [{
                 "quantity": 2,
-                "food": foodId,
+                "food": "foodId",
             }],
             "status": "Paid",
             "producerId": 124578,
             "amount": $7.00,
-            "pickUpDateTime": 09/20/2021 8:00pm,   
+            "pickUpDateTime": "09/20/2021 8:00pm",   
         },
         {
             "items": [{
                 "quantity": 5,
-                "food": foodId,
+                "food": "foodId",
             },
             {
                 "quantity": 6,
-                "food": foodId
+                "food": "foodId"
             }],
             "status": "Not Paid",
             "producerId": 124586,
@@ -123,16 +114,7 @@ Consumer Documents
         
     ]
 
-    // Batch process that will clear a days menu array after the day has passed
-    "Menu": {
-        "Sunday": [FoodID],
-        "Monday": [FoodID, FoodId,  ...],
-        "Tuesday": [FoodID, FoodId, ...],
-        "Wednesday": [FoodID, FoodId, ...],
-        "Thursday": [FoodID, FoodId, ...],
-        "Friday": [FoodID, FoodId, ...],
-        "Saturday": [FoodID, FoodId, ...], 
-    }
+    
 }
 
 Reviews for Consumer Documents
@@ -165,6 +147,7 @@ Food Documents
     "price": 5.00,
     "rating": 4.54, 
     "name": "French Fries",
+    "dateCreated": "new Date()"
 }
 
 Reviews for Food
