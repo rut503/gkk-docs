@@ -1,7 +1,7 @@
 ## Back-End System : *FastAPI*
 We will be using ***FastAPI***, which is a recent and popular Python library to build out the REST-Full back-end system for GKK product.
 
-Tutorial : There's no good tutorial out there
+Tutorial : https://www.youtube.com/watch?v=MXwcUrI-iss
 FastAPI Website : https://fastapi.tiangolo.com/
 Documentation : https://fastapi.tiangolo.com/
 
