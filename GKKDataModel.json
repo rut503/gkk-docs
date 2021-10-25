@@ -3,51 +3,25 @@ Producer Documents
     "_id": 123456,
     "firstName": "Bob",
     "lastName": "Bill",
-    "phoneNum": 815-765-7895,
+    "phoneNum": "8157657895",
     "address": {
         "street": "123 Fake Street",
         "city": "DeKalb",
         "state": "IL",
-        "zip": 60000,
+        "zip": "60000",
     },
     // Bounded to 50
-    "food": [foodId, foodId, ... ],
     "averageProducerRating": 5,
 
     // Orders consumer has
     // I'm thinking we have a bool value, toPrepare, which tells us if the order
     // is to be prepared by user '123456' or if they ordered it. 
-    "acceptedOrdersToCreate": [
-        {
-            "items": [{
-                "quantity": 2,
-                "food": foodId,
-            }],
-            "status": "Paid",
-            "consumerId": 124578,
-            "amount": $7.00,
-            "pickUpDateTime": 09/20/2021 8:00pm,   
-        },
-        {
-            "items": [{
-                "quantity": 5,
-                "food": foodId,
-            },
-            {
-                ""quantity"": 6,
-                "food": foodId
-            }],
-            "status": "Not Paid",
-            "consumerId": 124586,
-            "amount": 17.00,
-            "pickUpDateTime": 09/10/2021 5:00pm       
-        }
-    ],
-
-    "pendingOrderForProducer": [
+    "currentOrders": [orderId, orderId],
+    "archievedOrders": []
 
     ],
-    "dateCreated": "new Date()"
+    "dateCreated": "2021-10-24T02:10:00.814+00:00",
+    "dataUpdated": "2021-10-24T02:10:00.814+00:00"
 }
 Reviews for Producers Documents
 {
@@ -70,51 +44,18 @@ Consumer Documents
 {
     "_id": 555555,
     "name": "Bob",
-    "phoneNum": 815-765-7895,
+    "phoneNum": "8157657895",
     "address": {
         "street": "123 Fake Street",
         "city": "DeKalb",
         "state": "IL",
-        "zip": 60000,
+        "zip": "60000",
     },
-    "food": "[foodId, foodId, ... ]",
-    "averageConsumerRating": 2.5,
-
-    // Orders consumer has
-    // I'm thinking we have a bool value, toPrepare, which tells us if the order
-    // is to be prepared by user '123456' or if they ordered it. 
-    "acceptedOrdersToPickup": [
-        {
-            "items": [{
-                "quantity": 2,
-                "food": "foodId",
-            }],
-            "status": "Paid",
-            "producerId": 124578,
-            "amount": $7.00,
-            "pickUpDateTime": "09/20/2021 8:00pm",   
-        },
-        {
-            "items": [{
-                "quantity": 5,
-                "food": "foodId",
-            },
-            {
-                "quantity": 6,
-                "food": "foodId"
-            }],
-            "status": "Not Paid",
-            "producerId": 124586,
-            "amount": 17.00,
-            "pickUpDateTime": 09/10/2021 5:00pm       
-        }
-    ],
-
-    "pendingOrderForConsumer": [
-        
-    ]
-
-    
+    "averageConsumerRating": 2,
+    "currentOrders": [orderId, orderId],
+    "archievedOrders": [],
+    "dateCreated": "2021-10-24T02:10:00.814+00:00",
+    "dataUpdated": "2021-10-24T02:10:00.814+00:00"
 }
 
 Reviews for Consumer Documents
@@ -134,7 +75,7 @@ Reviews for Consumer Documents
     "description": "Did not pick up food!",
 }
 
-// Separate Food document which has a location property.
+// Separate Food document which will have a location property.
 // Producer reviews are tied to food, not user
 // Limit of 50 food items per user
 Food Documents
@@ -147,7 +88,7 @@ Food Documents
     "price": 5.00,
     "rating": 4.54, 
     "name": "French Fries",
-    "dateCreated": "new Date()"
+    "dateCreated": "2021-11-01T13:00:00.000+00:00"
 }
 
 Reviews for Food
@@ -158,6 +99,19 @@ Reviews for Food
     "description": "Food was amazing, tasted like my grandmas"
 }
 
+Order Documents
+{
+    "consumerId": 555555,
+    "producerId": 123456,
+    "items": [{
+        foodId: 12568,
+        quantity :12
+    }],
+    "amount": 7.01,
+    "status": "producer pending",
+    "pickUpDateTime": "2021-11-01T13:00:00.000+00:00",
+    "dateCreated": "2021-10-25T19:21:14.963+00:00",
+}
 Notes for implementation:
 Whenever a new review is added, the averageRating value needs to be recalculated. 
 
