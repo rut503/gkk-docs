@@ -107,8 +107,9 @@ Order Documents
         foodId: 12568,
         quantity :12
     }],
-    "amount": 7.01,
+    "amount": 7.00,
     "status": "producer pending",
+    "mealTime": "breakfast",
     "pickUpDateTime": "2021-11-01T13:00:00.000+00:00",
     "dateCreated": "2021-10-25T19:21:14.963+00:00",
 }
