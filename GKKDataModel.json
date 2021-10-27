@@ -112,6 +112,7 @@ Order Documents
     "mealTime": "breakfast",
     "pickUpDateTime": "2021-11-01T13:00:00.000+00:00",
     "dateCreated": "2021-10-25T19:21:14.963+00:00",
+    "dateUpdated": "2021-10-25T19:21:14.963+00:00",
 }
 Notes for implementation:
 Whenever a new review is added, the averageRating value needs to be recalculated. 
