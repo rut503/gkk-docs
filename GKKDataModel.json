@@ -10,16 +10,29 @@ Producer Documents
         "state": "IL",
         "zip": "60000",
     },
-    // Bounded to 50
+    // Array that contains the food items assocaited with this producer
+    "food": [foodId, foodId],
     "averageProducerRating": 5,
-
-    // Orders consumer has
-    // I'm thinking we have a bool value, toPrepare, which tells us if the order
-    // is to be prepared by user '123456' or if they ordered it. 
+    // Array that contains the orders associated with this producer
     "currentOrders": [orderId, orderId],
-    "archievedOrders": []
-
-    ],
+    // Archived orders
+    "archivedOrders": [orderId, orderId],
+    // Contains the menu of a producer for a week
+    "menu": {
+        "sunday": {
+            "breakfast": [foodId, foodId],
+            "lunch": [],
+            "dinner": []
+        },
+        "monday": {
+            "breakfast": [foodId],
+            "lunch": [foodId],
+            "dinner": [foodId]
+        },
+        "tuesday": {
+            ....
+        },...
+    },
     "dateCreated": "2021-10-24T02:10:00.814+00:00",
     "dataUpdated": "2021-10-24T02:10:00.814+00:00"
 }
@@ -27,19 +40,14 @@ Reviews for Producers Documents
 {
     // Review for chef 123456
     "_id": 1,
+    "consumerId": 555555,
     "producerId": 123456, 
     "rating": 5,
+    "title": "Best. Food. Ever",
     // Reviews bounded to 300 characters
     "description": "Food was nice and warm",
+    "dateCreated": "2021-11-01T13:00:00.000+00:00"
 }
-{
-    // Review for chef 123456
-    "_id": 2,
-    "producerId": 123456, 
-    "rating": 5,
-    "description": "Food was amazing",
-}
-
 Consumer Documents
 {
     "_id": 555555,
@@ -60,19 +68,14 @@ Consumer Documents
 
 Reviews for Consumer Documents
 {
-    // Review for chef 123456
     "_id": 1,
-    "consumerId": 555555, 
-    "rating": 5,
-    // Reviews bounded to 300 characters
-    "description": "Arrived on time for his food",
-}
-{
-    // Review for chef 123456
-    "_id": 2,
-    "consumerId": 555555, 
+    "consumerId": ,
+    "producerId": 555555, 
     "rating": 1,
-    "description": "Did not pick up food!",
+    "title": "Worst. Customer. Ever.",
+    // Reviews bounded to 300 characters
+    "description": "wtf",
+    "dateCreated": "2021-11-01T13:00:00.000+00:00"
 }
 
 // Separate Food document which will have a location property.
@@ -88,19 +91,24 @@ Food Documents
     "price": 5.00,
     "rating": 4.54, 
     "name": "French Fries",
-    "dateCreated": "2021-11-01T13:00:00.000+00:00"
+    "portionSize": 1.4,
+    "spicy": 0,
+    "dateCreated": "2021-11-01T13:00:00.000+00:00",
+    "dateUpdated": "2021-11-01T13:00:00.000+00:00"
 }
 
 Reviews for Food
 {
-    "_id": 535,
     "foodId": 12568,
+    "consumerId": 555555,
     "rating": 5,
-    "description": "Food was amazing, tasted like my grandmas"
-}
+    "title": "Best cookies ever",
+    "description": "The texture. The taste. My satisfactory face, 10/10",
+    "dateCreated": "2021-11-01T13:00:00.000+00:00"
 
 Order Documents
 {
+    "id": 123456789,
     "consumerId": 555555,
     "producerId": 123456,
     "items": [{
