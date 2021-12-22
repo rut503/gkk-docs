@@ -29,9 +29,7 @@
 ### Producer
 - I want to create my producer account with phone number.
 - I want to CRUD my profile. 
-- I want to CRUD in which food types I will be seriving.
-- I want to CRUD my food schedule for next 6 days.
-    - Don't allow updates if the food orders are confirmed already.
+- I want to CRUD my food schedule for next 7 days.
 - I want to CRD new food item to my menu list.
     - Don't allow updates if the food orders are confirmed already.
 - I want to CRD tags to the food items in my menu.
