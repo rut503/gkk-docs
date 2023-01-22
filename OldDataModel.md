@@ -1,4 +1,5 @@
-Producer Documents
+## Producer Documents
+```json
 {
     "_id": 123456,
     "firstName": "Bob",
@@ -36,7 +37,11 @@ Producer Documents
     "dateCreated": "2021-10-24T02:10:00.814+00:00",
     "dataUpdated": "2021-10-24T02:10:00.814+00:00"
 }
-Reviews for Producers Documents
+```
+
+## Reviews for Producers Documents
+
+```json
 {
     // Review for chef 123456
     "_id": 1,
@@ -48,7 +53,10 @@ Reviews for Producers Documents
     "description": "Food was nice and warm",
     "dateCreated": "2021-11-01T13:00:00.000+00:00"
 }
-Consumer Documents
+```
+
+## Consumer Documents
+```json
 {
     "_id": 555555,
     "name": "Bob",
@@ -65,8 +73,10 @@ Consumer Documents
     "dateCreated": "2021-10-24T02:10:00.814+00:00",
     "dataUpdated": "2021-10-24T02:10:00.814+00:00"
 }
+```
 
-Reviews for Consumer Documents
+## Reviews for Consumer Documents
+```json
 {
     "_id": 1,
     "consumerId": ,
@@ -77,11 +87,13 @@ Reviews for Consumer Documents
     "description": "wtf",
     "dateCreated": "2021-11-01T13:00:00.000+00:00"
 }
+```
 
 // Separate Food document which will have a location property.
 // Producer reviews are tied to food, not user
 // Limit of 50 food items per user
-Food Documents
+## Food Documents
+```json
 {
     "_id": 12568, 
     "producerId": 546,
@@ -96,8 +108,10 @@ Food Documents
     "dateCreated": "2021-11-01T13:00:00.000+00:00",
     "dateUpdated": "2021-11-01T13:00:00.000+00:00"
 }
+```
 
-Reviews for Food
+## Reviews for Food
+```json
 {
     "foodId": 12568,
     "consumerId": 555555,
@@ -105,8 +119,11 @@ Reviews for Food
     "title": "Best cookies ever",
     "description": "The texture. The taste. My satisfactory face, 10/10",
     "dateCreated": "2021-11-01T13:00:00.000+00:00"
+}
+```
 
-Order Documents
+## Order Documents
+```json
 {
     "id": 123456789,
     "consumerId": 555555,
@@ -122,6 +139,8 @@ Order Documents
     "dateCreated": "2021-10-25T19:21:14.963+00:00",
     "dateUpdated": "2021-10-25T19:21:14.963+00:00",
 }
+```
+
 Notes for implementation:
 Whenever a new review is added, the averageRating value needs to be recalculated. 
 

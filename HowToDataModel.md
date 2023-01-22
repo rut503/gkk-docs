@@ -1,5 +1,4 @@
 ## How to Data Model with MongoDB
-
 Data Modeling Tutorials : 
 - https://www.youtube.com/watch?v=QAqK-R9HUhc
 - https://www.youtube.com/watch?v=3GHZd0zv170
@@ -13,7 +12,6 @@ Data Modeling Tutorials :
 5. Repeat step 3 and 4 forever
 
 ### Method
-
 - Data model is defined at the application level.
 - Design is part of each phase of the application lifetime. When the application requirements changes, the data model changes too.
 - What effects the data model?
@@ -50,12 +48,6 @@ Data Modeling Tutorials :
         - time it takes to query data
         - easy of use for the developers
     - current operations assumptions and growth projections
-
-
-
-
-
-
 
 
 
